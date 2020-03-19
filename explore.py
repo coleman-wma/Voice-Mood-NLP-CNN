@@ -40,8 +40,8 @@ text_tokens = []
 Tokenize text
 '''
 
-for i in range(0, len(sample_text)):
-    tokenized = word_tokenize(sample_text[i])
+for i in range(0, len(all_text)):
+    tokenized = word_tokenize(all_text[i])
     text_tokens.append(tokenized)
 
 '''
@@ -106,3 +106,41 @@ def remove_noise(tweet_tokens, stop_words = ()):
         if len(token) > 0 and token not in string.punctuation and token.lower() not in stop_words:
             cleaned_tokens.append(token.lower())
     return cleaned_tokens
+
+print(remove_noise(text_tokens[0], stop_words))
+
+'''
+Applying normalisation and cleaning to all text, store in object
+'''
+
+cleaned_text_tokens = []
+
+for tokens in text_tokens:
+    cleaned_text_tokens.append(remove_noise(tokens, stop_words))
+
+# compare before with after
+print(text_tokens[2510])
+print(cleaned_text_tokens[2510])
+
+'''
+Determining Word Density
+'''
+
+# not sensible to do this for one entry, so lets look at all...
+
+def get_all_words(cleaned_tokens_list):
+    for tokens in cleaned_tokens_list:
+        for token in tokens:
+            yield token
+
+all_pos_words = get_all_words(cleaned_text_tokens)
+
+from nltk import FreqDist
+
+freq_dist_pos = FreqDist(all_pos_words)
+print(freq_dist_pos.most_common(10))
+
+'''
+Preparing data for the model
+'''
+
