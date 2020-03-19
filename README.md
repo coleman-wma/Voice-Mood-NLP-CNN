@@ -42,8 +42,11 @@ Build an MVP (minimal viable product) using machine learning to (1) predict user
 * Links to a number of datasets and structure of analysis/code: https://towardsdatascience.com/building-a-vocal-emotion-sensor-with-deep-learning-bedd3de8a4a9
 * Sentiment analysis, some datasets and code: https://www.kdnuggets.com/2018/08/emotion-sentiment-analysis-practitioners-guide-nlp-5.html
 * Emotion prediction using audio and text inputs, SOTA: https://github.com/david-yoon/multimodal-speech-emotion
-* IEMOCAP dataset: https://sail.usc.edu/iemocap/
+* IEMOCAP dataset: https://sail.usc.edu/iemocap/ - 3 to 5 day request time
 * Kaggle emotion in text competition: https://www.kaggle.com/c/sa-emotions/data
+* JULIE EmoBank dataset: https://github.com/JULIELab/EmoBank - this one scores on Valence, Activation and Dominance scales.
+* RECOLA - audio - also scores on Valence, Activation and Dominance - requires request from Professor - 
+* USC Creative IT - audio - scores on VAD - https://sail.usc.edu/CreativeIT/ImprovRelease.htm - 3 to 5 day request time
 
 ## Tech Specs:
 * Python
@@ -52,3 +55,4 @@ Build an MVP (minimal viable product) using machine learning to (1) predict user
 * Time constraints
 * Complexity - implementation of other code base?
 * Demonstrability
+* Datasets - the more interesting ones are not freely available for download - they must be requested, which takes 3 to 5 working days to approve
