@@ -356,6 +356,25 @@ print_preds_errors_plots(predictions_D, lab_test_D, "DOMINANCE")
 
 
 '''
+SAVE MODELS
+'''
+
+from joblib import dump, load
+dump(reg_V, 'model_text_valence.joblib')
+dump(reg_A, 'model_text_activation.joblib')
+dump(reg_D, 'model_text_dominance.joblib')
+
+'''
+LOAD MODELS
+'''
+
+# =============================================================================
+# reg_V = load('model_text_valence.joblib')
+# reg_A = load('model_text_activation.joblib')
+# reg_D = load('model_text_dominance.joblib')
+# =============================================================================
+
+'''
 Testing a random sentence
 '''
 
@@ -377,6 +396,7 @@ string_matrix = vectorizer.transform(testing_input)
 
 # Use the same set of features as learned in our model
 # 'top_words' has been declared in a global scope previously
+# But it may be scoped for valence and not the other two dimensions - check
 chi_test_string = string_matrix[:, top_words[0]]
 
 # collect all the features in one object
@@ -385,6 +405,23 @@ new_input_features = np.hstack([test_input_meta, chi_test_string.todense()])
 print("VALENCE SCORE PREDICTION: ", reg_V.predict(new_input_features))
 print("ACTIVATION SCORE PREDICTION: ", reg_A.predict(new_input_features))
 print("DOMINANCE SCORE PREDICTION: ", reg_D.predict(new_input_features))
+
+'''
+NEXT STEPS:
+    Implement pipeline:
+    https://scikit-learn.org/dev/tutorial/text_analytics/working_with_text_data.html
+    Construct 'top_words' for activation and dominance dimensions
+    Implement online:
+    https://towardsdatascience.com/develop-a-nlp-model-in-python-deploy-it-with-flask-step-by-step-744f3bdd7776
+    Try wordtovec (Domenico)
+    Try linear regression
+    Try Naive Bayes
+    Try SVM
+    Try Random Forest Regressor
+    Try different dimension reduction methods
+    Find more data
+    Deep Learning models
+'''
 
 # =============================================================================
 # from collections import Counter
