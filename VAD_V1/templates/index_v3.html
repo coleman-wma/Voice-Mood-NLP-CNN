@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<!--
+From: https://towardsdatascience.com/develop-a-nlp-model-in-python-deploy-it-with-flask-step-by-step-744f3bdd7776
+-->
+
+<html>
+<head>
+	<title>Home</title>
+	<!-- <link rel="stylesheet" type="text/css" href="../static/css/styles.css"> -->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+
+	<header>
+		<div class="container">
+		<div id="brandname">
+			Predicting Emotion from Text
+		</div>
+	</div>
+	</header>
+
+	<div class="ml-container">
+
+		<form action="{{ url_for('predict')}}" method="POST">
+		<p>Enter Your Message Here</p>
+		<!-- <input type="text" name="comment"/> -->
+		<textarea name="message" rows="4" cols="50"></textarea>
+		<br/>
+
+		<input type="submit" class="btn-info" value="predict">
+		
+	</form>
+		
+	</div>
+	
+	<div class="ml-container">
+	<!--
+	<select id="RecordRTC_Extension_Options">
+    <option value="0">Screen Only (wihtout audio)</option>
+    <option value="1">Screen + Microphone</option>
+    <option value="2">Screen + Speakers</option>
+    <option value="3">Screen + Microphone + Speakers</option>
+    <option value="4">Chrome Tab</option>
+    <option value="5">Chrome Tab (Audio Only)</option>
+    <option value="6">Full Screen + Camera</option>
+    <option value="7">Microphone + Camera</option>
+    <option value="8">Microphone + Speakers</option>
+    <option value="9">Microphone Only</option>
+    <option value="10">Speakers Only</option>
+	</select>
+	-->
+	<button id="btn-start-recording">Start Recording</button>
+	<button id="btn-stop-recording" disabled="">Stop Recording</button>
+	<hr>
+	<video controls="" autoplay="" playsinline=""></video>
+	
+	</div>
+	
+	<script>
+
+	if(typeof RecordRTC_Extension === 'undefined') {
+		alert('RecordRTC chrome extension is either disabled or not installed.');
+	}
+
+	// first step
+	var recorder = new RecordRTC_Extension();
+
+	var video = document.querySelector('video');
+
+	function stopRecordingCallback(blob) {
+		video.src = video.srcObject = null;
+		video.src = URL.createObjectURL(blob);
+		recorder = null;
+	}
+
+	document.getElementById('btn-start-recording').onclick = function() {
+		this.disabled = true;
+		// you can find list-of-options here:
+		// https://github.com/muaz-khan/Chrome-Extensions/tree/master/screen-recording#getsupoortedformats
+		// var options = recorder.getSupoortedFormats()[document.getElementById('RecordRTC_Extension_Options').value];
+
+		// second step
+		recorder.startRecording({enableMicrophone: true}, function() {
+			document.getElementById('btn-stop-recording').disabled = false;
+		});
+	};
+
+	document.getElementById('btn-stop-recording').onclick = function() {
+		this.disabled = true;
+
+		// third and last step
+		recorder.stopRecording(stopRecordingCallback);
+	};
+
+	</script>
+	
+	<script src="https://www.webrtc-experiment.com/common.js"></script>
+</body>
+</html>
