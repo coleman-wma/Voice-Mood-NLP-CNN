@@ -1,6 +1,16 @@
 # NLP-Emotion_Voice
 Repo for Dublin.AI personal project looking at developing a voice biometric monitoring solution for mental health applications.
 
+Code for building models is in the 'python' folder.
+
+Code for the web application is in the 'web_app' folder.
+
+This application creates a front end where users can record a snippet of themselves talking. This is converted to text using Googles speech-to-text, and I then predict emotion on three dimensions (valence, activation and dominance) using both the audio and text outputs.
+
+[Dimensions for emotions?](https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.researchgate.net%2Ffigure%2FPositions-of-Ekmans-basic-emotions-within-the-emotional-space-spanned-by-the-Valence_fig2_307512566&psig=AOvVaw0HAoSRqrTMigoHm1hrya4x&ust=1586001476131000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCNiN1ZaazOgCFQAAAAAdAAAAABAl)
+
+This frames emotion prediction as a regression task. I apply 3 NLP models to the text output and a CNN to the audio output.
+
 # Scoping Document
 
 ## Problem:
