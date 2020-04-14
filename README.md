@@ -1,6 +1,12 @@
 # NLP-Emotion_Voice
 Repo for Dublin.AI personal project looking at developing a voice biometric monitoring solution for mental health applications.
 
+There are a number of theories of emotion. Here, I'm going to use the dimensional model, which differentiates emotions on a number of axes: Valence (pleasant/unpleasant), Activation (lots of energy/little energy) and Dominance.
+
+Here's a visual which outlines this in terms of the first of these two dimensions, Valence and Activation:
+
+![Here's a visual which outlines this in terms of the first of these two dimensions, Valence and Activation:](https://www.google.com/url?sa=i&url=https%3A%2F%2Flink.springer.com%2Farticle%2F10.1007%2Fs11263-019-01158-4&psig=AOvVaw0hfOaJKWeMVAmNwweJK0w1&ust=1586950136837000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCJDvw4_o5-gCFQAAAAAdAAAAABAD)
+
 Code for building models is in the 'python' folder.
 
 Code for the web application is in the 'web_app' folder.
