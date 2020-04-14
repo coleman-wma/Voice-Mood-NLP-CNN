@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<!--
+From: https://towardsdatascience.com/develop-a-nlp-model-in-python-deploy-it-with-flask-step-by-step-744f3bdd7776
+-->
+
+<html>
+<head>
+	<title></title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles_v2.css') }}">
+    <script src="https://js.cx/libs/animate.js"></script>
+</head>
+<body>
+
+	<header>
+		<div class="container">
+		<h2 id="brandname">Predicting Emotion from Text and Audio</h2>	
+	</div>
+	
+	<!--
+	<div class="container">
+		<h2 style="text-align: left;">Predicting Emotion from Text</h2>	
+	</div>
+	-->
+	</header>
+	
+	<div class="results">
+	<h1 style="color:green;" id="words_said"></h1>
+	<p style="color:black;font-size:20;text-align: left;"><b>Valence Score from TEXT</b></p>	
+	{% if pred_V <= 3%}
+	<h2 style="color:red;" id="res_val"></h2>
+	{% elif pred_V > 3%}
+	<h2 style="color:blue;" id="res_val"></h2>
+	{% endif %}
+	<p style="color:black;font-size:20;text-align: left;"><b>Activation Score from TEXT</b></p>
+	{% if pred_A <= 2%}
+	<h2 style="color:red;" id="res_act"></h2>
+	{% elif pred_A > 2%}
+	<h2 style="color:blue;" id="res_act"></h2>
+	{% endif %}
+	<p style="color:black;font-size:20;text-align: left;"><b>Dominance Score from TEXT</b></p>
+	{% if pred_D <= 4%}
+	<h2 style="color:red;" id="res_dom"></h2>
+	{% elif pred_D > 4%}
+	<h2 style="color:blue;" id="res_dom"></h2>
+	{% endif %}
+		<p style="color:black;font-size:20;text-align: left;"><b>Valence Score from AUDIO</b></p>	
+	{% if pred_V <= 3%}
+	<h2 style="color:red;" id="res_valAud"></h2>
+	{% elif pred_V > 3%}
+	<h2 style="color:blue;" id="res_valAud"></h2>
+	{% endif %}
+	<p style="color:black;font-size:20;text-align: left;"><b>Activation Score from AUDIO</b></p>
+	{% if pred_A <= 2%}
+	<h2 style="color:red;" id="res_actAud"></h2>
+	{% elif pred_A > 2%}
+	<h2 style="color:blue;" id="res_actAud"></h2>
+	{% endif %}
+	<p style="color:black;font-size:20;text-align: left;"><b>Dominance Score from AUDIO</b></p>
+	{% if pred_D <= 4%}
+	<h2 style="color:red;" id="res_domAud"></h2>
+	{% elif pred_D > 4%}
+	<h2 style="color:blue;" id="res_domAud"></h2>
+	{% endif %}
+	
+	</div>
+	
+	<div id="path">
+    	<div id="brick"></div>
+  	</div>
+	
+	<script>
+	document.getElementById("res_val").innerHTML = {{ pred_V }};
+	document.getElementById("res_act").innerHTML = {{ pred_A }};
+	document.getElementById("res_dom").innerHTML = {{ pred_D }};
+	document.getElementById("res_valAud").innerHTML = {{ pred_Vaud }};
+	document.getElementById("res_actAud").innerHTML = {{ pred_Aaud }};
+	document.getElementById("res_domAud").innerHTML = {{ pred_Daud }};
+	document.getElementById("words_said").innerHTML = {{ pred_words|safe }};
+	
+	function makeEaseInOut(timing) {
+      return function(timeFraction) {
+        if (timeFraction < .5)
+          return timing(2 * timeFraction) / 2;
+        else
+          return (2 - timing(2 * (1 - timeFraction))) / 2;
+      }
+    }
+
+
+    function bounce(timeFraction) {
+      for (let a = 0, b = 1, result; 1; a += b, b /= 2) {
+        if (timeFraction >= (7 - 4 * a) / 11) {
+          return -Math.pow((11 - 6 * a - 11 * timeFraction) / 4, 2) + Math.pow(b, 2)
+        }
+      }
+    }
+
+    let bounceEaseInOut = makeEaseInOut(bounce);
+    
+    //function back(timeFraction) {
+  	//	return Math.pow(timeFraction, 2) * ((1) * timeFraction - x)
+	//	}
+	
+	//let bounceEaseInOut = makeEaseInOut(back);
+
+    brick.onclick = function() {
+      animate({
+        duration: 3000,
+        timing: bounceEaseInOut,
+        draw: function(progress) {
+          brick.style.left = progress * {{ pred_Daud * 100}} + 'px';
+        }
+      });
+    };
+	</script>
+
+</body>
+</html>

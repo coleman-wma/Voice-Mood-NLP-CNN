@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<!--
+From: https://towardsdatascience.com/develop-a-nlp-model-in-python-deploy-it-with-flask-step-by-step-744f3bdd7776
+-->
+
+<html>
+<head>
+	<title></title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles_v10.css') }}">
+    <script src="https://js.cx/libs/animate.js"></script>
+</head>
+<body>
+
+	<header>
+		<div class="container">
+		<h2 id="brandname">Predicting Emotion from Text and Audio</h2>	
+	</div>
+	
+	<!--
+	<div class="container">
+		<h2 style="text-align: left;">Predicting Emotion from Text</h2>	
+	</div>
+	-->
+	</header>
+	
+	<div class="results">
+	<p style="color:black;font-size:20;text-align: left;"><b>Text predicted from audio signal:</b></p>	
+	<h1 style="color:black;" id="words_said"></h1> </div>
+	<div>
+	<p style="color:black;font-size:20;text-align: left;"><b>Valence Score from TEXT</b></p>	
+	{% if pred_V <= 3%}
+	<h2 style="color:red;" id="res_val"></h2>
+	{% elif pred_V > 3%}
+	<h2 style="color:blue;" id="res_val"></h2>
+	{% endif %}
+	<div id="path"> 	<div id="brick_text_v"></div></div>
+	
+	<p style="color:black;font-size:20;text-align: left;"><b>Activation Score from TEXT</b></p>
+	{% if pred_A <= 3%}
+	<h2 style="color:red;" id="res_act"></h2>
+	{% elif pred_A > 3%}
+	<h2 style="color:blue;" id="res_act"></h2>
+	{% endif %}
+	<div id="path"> 	<div id="brick_text_a"></div></div>
+	
+	<p style="color:black;font-size:20;text-align: left;"><b>Dominance Score from TEXT</b></p>
+	{% if pred_D <= 3%}
+	<h2 style="color:red;" id="res_dom"></h2>
+	{% elif pred_D > 3%}
+	<h2 style="color:blue;" id="res_dom"></h2>
+	{% endif %}
+	<div id="path"> 	<div id="brick_text_d"></div></div>
+	
+		<p style="color:black;font-size:20;text-align: left;"><b>Valence Score from AUDIO</b></p>	
+	{% if pred_Vaud <= 3%}
+	<h2 style="color:red;" id="res_valAud"></h2>
+	{% elif pred_Vaud > 3%}
+	<h2 style="color:blue;" id="res_valAud"></h2>
+	{% endif %}
+	<div id="path"> 	<div id="brick_audio_v"></div></div>
+	
+	<p style="color:black;font-size:20;text-align: left;"><b>Activation Score from AUDIO</b></p>
+	{% if pred_Aaud <= 3%}
+	<h2 style="color:red;" id="res_actAud"></h2>
+	{% elif pred_Aaud > 3%}
+	<h2 style="color:blue;" id="res_actAud"></h2>
+	{% endif %}
+	<div id="path"> 	<div id="brick_audio_a"></div> </div>
+
+	<p style="color:black;font-size:20;text-align: left;"><b>Dominance Score from AUDIO</b></p>
+	{% if pred_Daud <= 3%}
+	<h2 style="color:red;" id="res_domAud"></h2>
+	{% elif pred_Daud > 3%}
+	<h2 style="color:blue;" id="res_domAud"></h2>
+	{% endif %}
+	<div id="path"> 	<div id="brick_audio_d"></div></div>
+	<div id="smiley"></div>
+	
+	<div id="path" style="visibility:hidden;"> 	<div id="brick"></div></div>
+	  	
+	<div class="results_emoji">
+	<p style="color:black; font-size:20; text-align:left;"><b>Predicted Emotion:</b></p>
+	<!-- below was a h1 -->	
+	<h1 style="color:black; font-size:80px; text-align:center; padding:0px; margin:0px;" id="emoji"></h1> </div>
+	<div>
+	
+	
+	
+	<script>
+	document.getElementById("res_val").innerHTML = {{ pred_V }};
+	document.getElementById("res_act").innerHTML = {{ pred_A }};
+	document.getElementById("res_dom").innerHTML = {{ pred_D }};
+	document.getElementById("res_valAud").innerHTML = {{ pred_Vaud }};
+	document.getElementById("res_actAud").innerHTML = {{ pred_Aaud }};
+	document.getElementById("res_domAud").innerHTML = {{ pred_Daud }};
+	document.getElementById("words_said").innerHTML = {{ pred_words|safe }};
+	
+	function makeEaseInOut(timing) {
+      return function(timeFraction) {
+        if (timeFraction < .5)
+          return timing(2 * timeFraction) / 2;
+        else
+          return (2 - timing(2 * (1 - timeFraction))) / 2;
+      }
+    }
+
+
+    function bounce(timeFraction) {
+      for (let a = 0, b = 1, result; 1; a += b, b /= 2) {
+        if (timeFraction >= (7 - 4 * a) / 11) {
+          return -Math.pow((11 - 6 * a - 11 * timeFraction) / 4, 2) + Math.pow(b, 2)
+        }
+      }
+    }
+
+    let bounceEaseInOut = makeEaseInOut(bounce);
+    
+    //function back(timeFraction) {
+  	//	return Math.pow(timeFraction, 2) * ((1) * timeFraction - x)
+	//	}
+	
+	//let bounceEaseInOut = makeEaseInOut(back);
+
+    //brick.onclick = function() {
+      //animate({
+        //duration: 3000,
+        //timing: bounceEaseInOut,
+        //draw: function(progress) {
+          //brick.style.left = progress * {{ pred_Daud * 100}} + 'px';
+        //}
+      //});
+    //};
+    
+    //document.getElementById("brick_text_v").onload = function() {
+          //animate({
+        	//duration: 3000,
+        	//timing: bounceEaseInOut,
+        	//draw: function(progress) {
+        		//brick_text_v.style.left = progress * {{ pred_V * 100}} + 'px';
+        //brick_text_a.style.left = progress * {{ pred_A * 100}} + 'px';
+        //brick_text_d.style.left = progress * {{ pred_D * 100}} + 'px';
+        //brick_audio_v.style.left = progress * {{ pred_Vaud * 100}} + 'px';
+        //brick_audio_a.style.left = progress * {{ pred_Aaud * 100}} + 'px';
+          //brick_audio_d.style.left = progress * {{ pred_Daud * 100}} + 'px';
+        //}
+      //});
+    //};
+    
+    animate({
+        	duration: 2750,
+        	timing: bounceEaseInOut,
+        	draw: function(progress) {
+        		brick_text_v.style.left = progress * {{ (pred_V * 100) - 25}} + 'px';
+        }
+      });
+      
+        animate({
+        	duration: 3000,
+        	timing: bounceEaseInOut,
+        	draw: function(progress) {
+        		brick_text_a.style.left = progress * {{ (pred_A * 100) - 25}} + 'px';
+        }
+      });
+      
+          animate({
+        	duration: 3250,
+        	timing: bounceEaseInOut,
+        	draw: function(progress) {
+        		brick_text_d.style.left = progress * {{ (pred_D * 100) - 25}} + 'px';
+        }
+      });
+      
+          animate({
+        	duration: 3500,
+        	timing: bounceEaseInOut,
+        	draw: function(progress) {
+        		brick_audio_v.style.left = progress * {{ (pred_Vaud * 100) - 25}} + 'px';
+        }
+      });
+      
+          animate({
+        	duration: 3750,
+        	timing: bounceEaseInOut,
+        	draw: function(progress) {
+        		brick_audio_a.style.left = progress * {{ (pred_Aaud * 100) - 25}} + 'px';
+        }
+      });
+      
+          animate({
+        	duration: 4000,
+        	timing: bounceEaseInOut,
+        	draw: function(progress) {
+        		brick_audio_d.style.left = progress * {{ (pred_Daud * 100) - 25}} + 'px';
+        }
+      });
+      
+      var emojis = [0x1F600, 0x1F604, 0x1F34A, 0x1F344, 0x1F37F, 0x1F363, 0x1F370, 0x1F355,
+                  0x1F354, 0x1F35F, 0x1F6C0, 0x1F48E, 0x1F5FA, 0x23F0, 0x1F579, 0x1F4DA,
+                  0x1F431, 0x1F42A, 0x1F439, 0x1F424];
+    
+    var act_lookup
+    var val_lookup
+    var emoji_use
+    var idx
+    
+    var emoji_1 = [0x1F629, 0x1F629, 0x1F629, 0x1F629, 0x1F629];
+    var emoji_2 = [0x1F62A, 0x1F62A, 0x1F610, 0x1F60C, 0x1F60C];
+    var emoji_3 = [0x1F622, 0x1F641, 0x1F610, 0x1F642, 0x1F600];
+    var emoji_4 = [0x1F621, 0x1F621, 0x1F611, 0x1F604, 0x1F604];
+    var emoji_5 = [0x1F606, 0x1F606, 0x1F606, 0x1F606, 0x1F606];
+    
+    if ({{ pred_Aaud }} <= 1.5) {
+    	act_lookup = emoji_1;
+    } else if ({{ pred_Aaud }} > 1.5 && {{ pred_Aaud }} <= 2.5) {
+    	act_lookup = emoji_2;
+    } else if ({{ pred_Aaud }} > 2.5 && {{ pred_Aaud }} <= 3.5) {
+    	act_lookup = emoji_3;
+    } else if ({{ pred_Aaud }} > 3.5 && {{ pred_Aaud }} <= 4.5) {
+    	act_lookup = emoji_4;
+    } else {
+    	act_lookup = emoji_5;
+    }
+    
+    if ({{ pred_Vaud }} <= 1.5) {
+    	idx = 0;
+    } else if ({{ pred_Vaud }} > 1.5 && {{ pred_Vaud }} <= 2.5) {
+    	idx = 1;
+    } else if ({{ pred_Vaud }} > 2.5 && {{ pred_Vaud }} <= 3.5) {
+    	idx = 2;
+    } else if ({{ pred_Vaud }} > 3.5 && {{ pred_Vaud }} <= 4.5) {
+    	idx = 3;
+    } else {
+    	idx = 4;
+    }
+    	
+    emoji_use = act_lookup[idx];
+    document.getElementById("emoji").innerHTML = String.fromCodePoint(emoji_use);
+    
+    //function convert() {
+    	//var emoji_in = String.fromCodePoint(emoji_use);
+    	//var emoji_out = emojione.unicodeToImage(emoji_in);
+    	//document.getElementById("emoji").innerHTML = emoji_out;
+    //}
+    
+    //convert();
+    
+    //function loadImage() {
+  	//	alert("run a script is loaded");
+	//}
+	
+	//loadImage()
+	
+	</script>
+
+</body>
+</html>

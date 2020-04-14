@@ -1,0 +1,126 @@
+/*
+From:
+https://towardsdatascience.com/develop-a-nlp-model-in-python-deploy-it-with-flask-step-by-step-744f3bdd7776
+*/
+
+ul { list-style: none; }
+
+#recordingslist audio { display: block; margin-bottom: 10px; }
+    
+body{
+	font:15px/1.5 Arial, Helvetica,sans-serif;
+	padding: 0px;
+	background-color:#f4f3f3;
+	margin: 10px;
+}
+
+.container{
+	width:100%;
+	margin: 10px;
+	overflow: hidden;
+}
+
+header{
+	background:#03A9F4;#35434a;
+	border-bottom:#448AFF 3px solid;
+	height:120px;
+	width:100%;
+	padding-top:30px;
+
+}
+
+.main-header{
+			text-align: left;
+			background-color: blue;
+			height:100px;
+			width:100%;
+			margin:0px;
+		}
+		
+#brandname{
+	float:left;
+	font-size:30px;
+	color: #fff;
+	margin: 10px;
+}
+
+header h2{
+	text-align:left;
+	color:#fff;
+}
+
+.btn-info {background-color: #2196F3;
+	height:40px;
+	width:100px;} /* Blue */
+.btn-info:hover {background: #0b7dda;}
+
+
+.results{
+	border-radius: 15px 50px;
+    background: #345fe4;
+    padding: 20px; 
+    width: 750px;
+    height: 150px;
+}
+
+#brick {
+  width: 40px;
+  height: 20px;
+  background: #EE6B47;
+  position: relative;
+  cursor: pointer;
+}
+
+#path {
+  outline: 1px solid #E8C48E;
+  width: 540px;
+  height: 20px;
+}
+
+#brick_text_v {
+  width: 40px;
+  height: 20px;
+  background: #EE6B47;
+  position: relative;
+  cursor: pointer;
+}
+
+#brick_text_a {
+  width: 40px;
+  height: 20px;
+  background: #EE6B47;
+  position: relative;
+  cursor: pointer;
+}
+
+#brick_text_d {
+  width: 40px;
+  height: 20px;
+  background: #EE6B47;
+  position: relative;
+  cursor: pointer;
+}
+
+#brick_audio_v {
+  width: 40px;
+  height: 20px;
+  background: #EE6B47;
+  position: relative;
+  cursor: pointer;
+}
+
+#brick_audio_a {
+  width: 40px;
+  height: 20px;
+  background: #EE6B47;
+  position: relative;
+  cursor: pointer;
+}
+
+#brick_audio_d {
+  width: 40px;
+  height: 20px;
+  background: #EE6B47;
+  position: relative;
+  cursor: pointer;
+}
