@@ -3,6 +3,8 @@ Repo for Dublin.AI personal project looking at developing a voice biometric moni
 
 [Here's a Loom video walking through the project.](https://www.loom.com/share/42298b03111c4ed6a7d4d224b65999b5)
 
+[![Here's a Loom video walking through the project.]({image-url})]({https://www.loom.com/share/42298b03111c4ed6a7d4d224b65999b5} "Loom Video")
+
 There are a number of theories of emotion. Here, I'm going to use the dimensional model, which differentiates emotions on a number of axes: Valence (pleasant/unpleasant), Activation (lots of energy/little energy) and Dominance (dominant/submissive).
 
 Here's a visual which outlines this in terms of the first of these two dimensions, Valence (left to right) and Activation (top to bottom):
