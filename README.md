@@ -5,7 +5,9 @@ Here's a Loom video walking through the project.
 
 There are a number of theories of emotion. Here, I'm going to use the dimensional model, which differentiates emotions on a number of axes: Valence (pleasant/unpleasant), Activation (lots of energy/little energy) and Dominance (dominant/submissive).
 
-![Here's a visual which outlines this in terms of the first of these two dimensions, Valence (left to right) and Activation (top to bottom):](https://github.com/coleman-wma/NLP-Emotion_Voice/blob/master/VA_emotions.png)
+Here's a visual which outlines this in terms of the first of these two dimensions, Valence (left to right) and Activation (top to bottom):
+
+![Circumplex model of emotion](https://github.com/coleman-wma/NLP-Emotion_Voice/blob/master/VA_emotions.png)
 
 There are a number of datasets which provide stimuli with scores on these dimensions. Here I'm using [IEMOCAP](https://sail.usc.edu/iemocap/).
 
