@@ -5,7 +5,7 @@ There are a number of theories of emotion. Here, I'm going to use the dimensiona
 
 Here's a visual which outlines this in terms of the first of these two dimensions, Valence and Activation:
 
-![Here's a visual which outlines this in terms of the first of these two dimensions, Valence and Activation:](https://www.google.com/url?sa=i&url=https%3A%2F%2Flink.springer.com%2Farticle%2F10.1007%2Fs11263-019-01158-4&psig=AOvVaw0hfOaJKWeMVAmNwweJK0w1&ust=1586950136837000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCJDvw4_o5-gCFQAAAAAdAAAAABAD)
+![Here's a visual which outlines this in terms of the first of these two dimensions, Valence and Activation:](https://github.com/coleman-wma/NLP-Emotion_Voice/blob/master/VA_emotions.png)
 
 Code for building models is in the 'python' folder.
 
