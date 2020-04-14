@@ -68,8 +68,9 @@ Build an MVP (minimal viable product) using machine learning to (1) predict user
 * RECOLA - audio - also scores on Valence, Activation and Dominance - requires request from Professor - 
 * USC Creative IT - audio - scores on VAD - https://sail.usc.edu/CreativeIT/ImprovRelease.htm - 3 to 5 day request time
 
-## Tech Specs:
+## Tech Stack:
 * Python
+* Flask, HTML, Javascript, CSS
 
 ## Risks:
 * Time constraints
