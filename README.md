@@ -1,19 +1,21 @@
 # NLP-Emotion_Voice
 Repo for Dublin.AI personal project looking at developing a voice biometric monitoring solution for mental health applications.
 
-There are a number of theories of emotion. Here, I'm going to use the dimensional model, which differentiates emotions on a number of axes: Valence (pleasant/unpleasant), Activation (lots of energy/little energy) and Dominance.
+Here's a Loom video walking through the project.
 
-Here's a visual which outlines this in terms of the first of these two dimensions, Valence and Activation:
+There are a number of theories of emotion. Here, I'm going to use the dimensional model, which differentiates emotions on a number of axes: Valence (pleasant/unpleasant), Activation (lots of energy/little energy) and Dominance (dominant/submissive).
 
-![Here's a visual which outlines this in terms of the first of these two dimensions, Valence and Activation:](https://github.com/coleman-wma/NLP-Emotion_Voice/blob/master/VA_emotions.png)
+![Here's a visual which outlines this in terms of the first of these two dimensions, Valence (left to right) and Activation (top to bottom):](https://github.com/coleman-wma/NLP-Emotion_Voice/blob/master/VA_emotions.png)
 
-Code for building models is in the 'python' folder.
+There are a number of datasets which provide stimuli with scores on these dimensions. Here I'm using [IEMOCAP](https://sail.usc.edu/iemocap/).
+
+I've included two Jupyter Notebooks above which outline data preparation ('Emotion_NLP_Audio_data_preparation.ipynb') and basic model training (Emotion_NLP_models.ipynb). 
+
+Further code for building models is in the 'python' folder.
 
 Code for the web application is in the 'web_app' folder.
 
 This application creates a front end where users can record a snippet of themselves talking. This is converted to text using Google's speech-to-text, and I then predict emotion on three dimensions (valence, activation and dominance) using both the audio and text outputs.
-
-[Dimensions for emotions?](https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.researchgate.net%2Ffigure%2FPositions-of-Ekmans-basic-emotions-within-the-emotional-space-spanned-by-the-Valence_fig2_307512566&psig=AOvVaw0HAoSRqrTMigoHm1hrya4x&ust=1586001476131000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCNiN1ZaazOgCFQAAAAAdAAAAABAl)
 
 This frames emotion prediction as a regression task. I apply 3 NLP models to the text output and a CNN to the audio output.
 
