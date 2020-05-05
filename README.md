@@ -7,7 +7,7 @@ Above you'll see two Jupyter Notebooks which outline data preparation ('Emotion_
 
 There are a number of theories of emotion. Here, I'm going to use the dimensional model, which differentiates emotions on a number of axes: Valence (pleasant/unpleasant), Activation (high energy/low energy) and Dominance (dominant/submissive).
 
-![Emotional Dimensions](https://github.com/coleman-wma/Voice-Mood-NLP-CNN/blob/master/dimensions_of_emotion.png)
+![Emotional Dimensions](https://github.com/coleman-wma/Voice-Mood-NLP-CNN/blob/master/images/dimensions_of_emotion.png)
 
 There are a number of datasets which provide stimuli with scores on these dimensions. Here I'm using [IEMOCAP](https://sail.usc.edu/iemocap/).
 
