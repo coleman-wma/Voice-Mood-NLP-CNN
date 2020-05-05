@@ -3,7 +3,7 @@ Repo for Dublin.AI personal project looking at developing a voice biometric moni
 
 [Click here to play a Loom video explaining the project.](https://www.loom.com/share/42298b03111c4ed6a7d4d224b65999b5)
 
-Above you'll see two Jupyter Notebooks which outline data preparation ('Emotion_NLP_Audio_data_preparation.ipynb') and basic model training ('Emotion_NLP_models.ipynb').
+In the [jupyter](https://www.loom.com/share/42298b03111c4ed6a7d4d224b65999b5) folder above you'll find two Jupyter Notebooks which outline data preparation ('Emotion_NLP_Audio_data_preparation.ipynb') and basic model training ('Emotion_NLP_models.ipynb').
 
 There are a number of theories of emotion. Here, I'm going to use the dimensional model, which differentiates emotions on a number of axes: Valence (pleasant/unpleasant), Activation (high energy/low energy) and Dominance (dominant/submissive).
 
