@@ -13,7 +13,7 @@ There are a number of datasets which provide stimuli with scores on these dimens
 
 Further code for building models is in the [python](https://github.com/coleman-wma/Voice-Mood-NLP-CNN/tree/master/python) folder.
 
-Code for the web application is in the [web_app](https://github.com/coleman-wma/Voice-Mood-NLP-CNN/tree/master/python) folder.
+Code for the web application is in the [web_app](https://github.com/coleman-wma/Voice-Mood-NLP-CNN/tree/master/web_app) folder.
 
 This application creates a front end where users can record a snippet of themselves talking. This is converted to text using Google's speech-to-text, and I then predict emotion on three dimensions (valence, activation and dominance) using both the audio and text outputs.
 
